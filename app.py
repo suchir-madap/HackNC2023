@@ -1,6 +1,8 @@
 from gtts import gTTS
 import streamlit as st
 import base64
+from ingestPDF import readUploadedPdf
+
 
 class SessionState:
     def __init__(self):
@@ -63,8 +65,13 @@ def autoplay_audio(file_path: str):
 st.subheader("Welcome to our AI Text Analyzer!")
 st.write("This program is designed to help you answer any questions you have about your uploaded document. Please enter a question/prompt below and the computer will generate a response to answer your query!")
 st.write("Please input your text here, I will analyze it: ")
-doc = st.text_area('Enter your text: ')
+doc = st.text_area('Enter your text or upload your file below: ')
+uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
+
 txt = st.text_area('Enter your question: ')
+
+
+readUploadedPdf(uploaded_file)
 
 col1, col2, col3 = st.columns([1,1,1])
 
@@ -76,3 +83,4 @@ with col2:
     st.button('Pause')
 with col3:
     st.button('Clear')
+
