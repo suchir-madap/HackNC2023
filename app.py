@@ -76,9 +76,10 @@ readUploadedPdf(uploaded_file)
 col1, col2, col3 = st.columns([1,1,1])
 
 with col1:
-    if st.button('GO'):
+    if st.button('Play'):
         textToAudio(doc)
         autoplay_audio("output.mp3")
+with col2:
+    st.button('Pause')
 with col3:
-    st.button('Reset')
-
+    st.button('Clear')
