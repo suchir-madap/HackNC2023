@@ -6,8 +6,22 @@ from langchain.document_loaders import TextLoader
 
 
 # load the document and split it into chunks
-loader = TextLoader("./data/A Lincoln Anthology Gettysburg Address.pdf")
+
+relativePath = "data/gettysburg_address.pdf"
+loader = TextLoader(relativePath)
 documents = loader.load() 
+
+
+
+# def file_reader(file):
+#     if(file.multiple_chunks() == False):
+#         text = file.read()
+#     else:
+#         while(file.multiple_chunks()):
+#             text += file.chunks()
+
+
+
 
 # split it into chunks
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
