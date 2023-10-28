@@ -64,6 +64,7 @@ st.subheader("Welcome to our AI Text Analyzer!")
 st.write("This program is designed to help you answer any questions you have about your uploaded document. Please enter a question/prompt below and the computer will generate a response to answer your query!")
 st.write("Please input your text here, I will analyze it: ")
 txt = st.text_area('Enter your text: ')
+txt = st.text_area('Enter your question: ')
 
 col1, col2, col3 = st.columns([1,1,1])
 
