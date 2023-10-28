@@ -2,6 +2,14 @@ from gtts import gTTS
 import streamlit as st
 import base64
 
+class SessionState:
+    def __init__(self):
+        self.play = False 
+
+session_state = SessionState()
+
+st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
+
 #PASS STRING TO TURN INTO AUDIO MP3
 def textToAudio(str):
     audio = gTTS(str)
@@ -51,3 +59,17 @@ def autoplay_audio(file_path: str):
             md,
             unsafe_allow_html=True,
         )
+
+st.subheader("Please input your text here, I will analyze it: ")
+txt = st.text_area('Enter text: ')
+
+col1, col2, col3 = st.columns([1,1,1])
+
+with col1:
+    if st.button('Play'):
+        textToAudio(txt)
+        autoplay_audio("output.mp3")
+with col2:
+    st.button('Pause')
+with col3:
+    st.button('Clear')
