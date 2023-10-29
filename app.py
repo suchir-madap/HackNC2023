@@ -65,8 +65,8 @@ def autoplay_audio(file_path: str):
 
 st.subheader("Welcome to our AI Text Analyzer!")
 st.write("This program is designed to help you answer any questions you have about your uploaded document. Please enter a question/prompt below and the computer will generate a response to answer your query!")
-st.write("Please input your text here, I will analyze it: ")
-doc = st.text_area('Enter your text or upload your file below: ')
+# st.write("Please input your text here, I will analyze it: ")
+# text = st.text_area('Enter your text or upload your file below: ')
 uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
 query = st.text_area('Enter your question: ')
