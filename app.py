@@ -69,23 +69,17 @@ st.write("Please input your text here, I will analyze it: ")
 doc = st.text_area('Enter your text or upload your file below: ')
 uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
+if st.button('Play'):
+    textToAudio(doc)
+    generateAudio()
+
+if st.button('Clear'):
+    st.audio("", format="audio/mp3")
+    # Optionally, you can delete the generated audio file here.
+
 query = st.text_area('Enter your question: ')
 
-
 passToLangChain = readUploadedPdf(uploaded_file)
+response = chunking(passToLangChain, query)  # You should update the chunking function to accept the query.
 
-
-from langtest import chunking
-
-st.subheader(chunking(passToLangChain))
-
-col1, col2, col3 = st.columns([1,1,1])
-
-with col1:
-    if st.button('Play'):
-        textToAudio(doc)
-        autoplay_audio("output.mp3")
-with col2:
-    st.button('Pause')
-with col3:
-    st.button('Clear')
+st.subheader(response)
