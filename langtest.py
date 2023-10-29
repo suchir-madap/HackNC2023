@@ -5,7 +5,7 @@ from langchain.llms import OpenAI
 
 
 # pulls Open AI key from Secrets
-os.environ["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 

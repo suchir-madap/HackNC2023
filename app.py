@@ -15,6 +15,18 @@ session_state = SessionState()
 
 st.set_page_config(page_title="StudyAId", page_icon=":tada:", layout="wide")
 
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html= True)
+
+
+
+
+local_css("style.css")
+
+
+
 #PASS STRING TO TURN INTO AUDIO MP3
 def textToAudio(str):
     audio = gTTS(str)
