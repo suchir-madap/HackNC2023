@@ -71,7 +71,7 @@ from langchain.chains.question_answering import load_qa_chain
 
 
 def callAPI(documents, query):
-
+    configure()
     chain = load_qa_chain(llm=OpenAI(), chain_type="map_reduce")
 
     testing = chain.run(input_documents=documents, question=query)
