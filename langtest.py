@@ -42,8 +42,9 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 
-os.environ["OPENAI_API_KEY"] = ""
 
+
+os.environ['openAIkey']
 llm = OpenAI()
 
 
