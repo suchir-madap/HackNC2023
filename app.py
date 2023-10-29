@@ -2,6 +2,7 @@ from gtts import gTTS
 import streamlit as st
 import base64
 from ingestPDF import readUploadedPdf
+from langtest import chunking
 
 
 class SessionState:
@@ -63,14 +64,25 @@ def autoplay_audio(file_path: str):
         )
 
 st.subheader("Welcome to StudyAId!")
+
 st.write("This program is designed to help you answer any questions you have about your uploaded document. Please enter a question/prompt below and the computer will generate a response to answer your query!")
-# doc = st.text_area('Upload your file below: ')
+
+def reset():
+    st.experimental_rerun()
+
+
+
 uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
-query = st.text_area('Enter your question: ')
-
+query = st.text_area('Enter your question:', value = "")
 
 passToLangChain = readUploadedPdf(uploaded_file)
+
+# Tries to clear the state of the Query text box when the clear button is clicked
+def clear_text():
+    st.session_state['Enter your question:'] = ""
+
+st.button("Clear text input", on_click =clear_text)
 
 
 from langtest import callAPI
@@ -89,12 +101,19 @@ with col1:
         answered = callAPI(passToLangChain, query)
         textToAudio(answered)
         autoplay_audio("output.mp3")
+        st.text (answered)
+        if st.button('Clear'):
+           st.experimental_rerun()
+           query = st.text_area('', value = "")
+
+           
+
         
-with col2:
-    if st.button('Play'):
-        st.experimental_rerun()
+# with col2:
+    # if st.button('Play'):
+    #     st.experimental_rerun()
    
 
-with col3:
+with col2:
     if st.button('Pause'):
         st.audio("output.mp3", format="audio/mp3", start_time=0, play=False)
