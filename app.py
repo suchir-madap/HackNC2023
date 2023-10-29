@@ -2,7 +2,6 @@ from gtts import gTTS
 import streamlit as st
 import base64
 from ingestPDF import readUploadedPdf
-from langtest import chunking
 
 
 class SessionState:
