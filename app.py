@@ -88,4 +88,3 @@ with col2:
     st.button('Pause')
 with col3:
     st.button('Clear')
-
