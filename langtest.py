@@ -3,12 +3,7 @@ from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddi
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
-from decouple import config
 import os
-# from dotenv import load_dotenv
-
-# def configure():
-#     load_dotenv()
 
 
 # load the document and split it into chunks
