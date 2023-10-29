@@ -3,12 +3,8 @@ from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddi
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
-from dotenv import load_dotenv
+from decouple import config
 import os 
-
-def configure():
-    load_dotenv()
-configure()
 
 
 # load the document and split it into chunks
@@ -51,9 +47,8 @@ from langchain.vectorstores import Chroma
 
 # import openai
 # os.environ["OPENAI_API_KEY"] = os.getenv('api_key')
-api_key = os.getenv('api_key')
-if api_key is not None:
-    os.environ["OPENAI_API_KEY"] = api_key
+api_key = config('API_KEY')
+os.environ["OPENAI_API_KEY"] = api_key
 
 
 # openai.api_key = os.getenv("OPENAI_API_KEY")

@@ -9,3 +9,4 @@ PyPika==0.48.9
 streamlit==1.28.0
 tiktoken==0.5.1
 python-dotenv==1.0.0
+python-decouple==3.8
