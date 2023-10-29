@@ -48,6 +48,11 @@ st.markdown(
 def generateAudio():
     audio_file = open('output.mp3', 'rb')
     st.audio(audio_file)
+    if st.audio:
+        if st.button('Play'):
+        st.audio(audio_file, format="audio/mp3", start_time=0, key="audio_player")
+    if st.button('Pause'):
+        st.audio(audio_file, format="audio/mp3", start_time=0, key="audio_player", play=False)
 
 def autoplay_audio(file_path: str):
     with open(file_path, "rb") as f:
@@ -87,13 +92,8 @@ from langtest import callAPI
 col1, col2, col3 = st.columns([1,1,1])
 
 with col1:
-    if st.button('Play'):
+    if st.button('Enter'):
         answered = callAPI(passToLangChain, query)
         textToAudio(answered)
         autoplay_audio("output.mp3")
-        st.experimental_rerun()
-with col2:
-    st.button('Pause')
-with col3:
-    if st.button('Reset'):
         st.experimental_rerun()
