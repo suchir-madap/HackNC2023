@@ -6,6 +6,10 @@ from langchain.document_loaders import TextLoader
 from decouple import config
 import os 
 from dotenv import api_key
+from dotenv import load_dotenv
+
+def configure():
+    load_dotenv()
 
 
 # load the document and split it into chunks
