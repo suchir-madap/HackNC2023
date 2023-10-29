@@ -94,7 +94,7 @@ with col1:
         st.experimental_rerun()
 with col2:
     if st.button('Play'):
-        st.audio("output.mp3", format="audio/mp3", start_time=0")
+        st.audio("output.mp3", format="audio/mp3", start_time=0)
 with col3:
     if st.button('Pause'):
-        st.audio("output.mp3", format="audio/mp3", start_time=0", play=False)
+        st.audio("output.mp3", format="audio/mp3", start_time=0, play=False)
