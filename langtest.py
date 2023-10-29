@@ -4,8 +4,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
 from decouple import config
-import os 
-from dotenv import api_key
+import os
 from dotenv import load_dotenv
 
 def configure():
