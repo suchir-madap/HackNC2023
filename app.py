@@ -91,6 +91,7 @@ with col1:
         answered = callAPI(passToLangChain, query)
         textToAudio(answered)
         autoplay_audio("output.mp3")
+        st.experimental_rerun()
 with col2:
     st.button('Pause')
 with col3:
