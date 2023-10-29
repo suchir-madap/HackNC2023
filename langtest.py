@@ -44,7 +44,10 @@ from langchain.vectorstores import Chroma
 
 
 
-os.environ['openAIkey']
+# os.environ['openAIkey']
+
+os.environ["OPENAI_API_KEY"] = os.environ['openAIkey']
+
 llm = OpenAI()
 
 
