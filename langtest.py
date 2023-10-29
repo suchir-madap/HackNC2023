@@ -47,11 +47,11 @@ from langchain.vectorstores import Chroma
 # os.environ['openAIkey']
 
 # os.environ["OPENAI_API_KEY"] = os.environ['openAIkey']
-os.environ.getattribute("OPENAI_API_KEY")
+open_ai_key = os.environ.get("OPENAI_API_KEY")
 
 
 
-llm = OpenAI()
+llm_call = OpenAI(api_key = open_ai_key)
 
 
 # print(llm("tell me a joke"))
@@ -61,7 +61,7 @@ from langchain.chains.question_answering import load_qa_chain
 
 def callAPI(documents, query):
 
-    chain = load_qa_chain(llm=OpenAI(), chain_type="map_reduce")
+    chain = load_qa_chain(llm=llm_call, chain_type="map_reduce")
 
     testing = chain.run(input_documents=documents, question=query)
     return testing
