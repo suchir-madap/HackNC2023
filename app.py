@@ -109,13 +109,15 @@ col1, col2, col3 = st.columns([1,1,1])
 
 with col1:
     if st.button('Enter'):
-        answered = callAPI(passToLangChain, query)
-        textToAudio(answered)
-        autoplay_audio("output.mp3")
-        st.text (answered)
-        if st.button('Clear'):
-           st.experimental_rerun()
-           query = st.text_area('', value = "")
+        if not query == "":
+            answered = callAPI(passToLangChain, query)
+
+            textToAudio(answered)
+            autoplay_audio("output.mp3")
+            st.text (answered)
+            if st.button('Clear'):
+                st.experimental_rerun()
+                query = st.text_area('', value = "")
 
            
 
