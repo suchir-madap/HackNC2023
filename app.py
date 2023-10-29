@@ -64,7 +64,7 @@ def autoplay_audio(file_path: str):
 
 st.subheader("Welcome to StudyAId!")
 st.write("This program is designed to help you answer any questions you have about your uploaded document. Please enter a question/prompt below and the computer will generate a response to answer your query!")
-doc = st.text_area('Upload your file below: ')
+# doc = st.text_area('Upload your file below: ')
 uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
 query = st.text_area('Enter your question: ')
