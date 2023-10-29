@@ -3,6 +3,7 @@ from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddi
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
+import secret
 
 
 # load the document and split it into chunks
@@ -47,7 +48,7 @@ from langchain.vectorstores import Chroma
 # os.environ['openAIkey']
 
 # import openai
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = secret.api
 
 
 
