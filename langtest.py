@@ -50,8 +50,10 @@ from langchain.vectorstores import Chroma
 # os.environ['openAIkey']
 
 # import openai
-os.environ["OPENAI_API_KEY"] = os.getenv('api_key')
-
+# os.environ["OPENAI_API_KEY"] = os.getenv('api_key')
+api_key = os.getenv('api_key')
+if api_key is not None:
+    os.environ["OPENAI_API_KEY"] = api_key
 
 
 # openai.api_key = os.getenv("OPENAI_API_KEY")
