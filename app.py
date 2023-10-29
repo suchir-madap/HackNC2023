@@ -119,6 +119,9 @@ with col1:
                 st.experimental_rerun()
                 query = st.text_area('', value = "")
 
+        else: 
+            st.text("Please provide a question!")
+
            
 
         
