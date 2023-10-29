@@ -3,6 +3,12 @@ from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddi
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
+from dotenv import load_dotenv
+import os 
+
+def configure():
+    load_dotenv()
+configure()
 
 
 # load the document and split it into chunks
@@ -30,9 +36,6 @@ def chunking(documents, query):
     return docs[0].page_content
 
 
-
-import os 
-
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 from langchain.document_loaders import TextLoader
@@ -47,8 +50,7 @@ from langchain.vectorstores import Chroma
 # os.environ['openAIkey']
 
 # import openai
-api_key = "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"
-os.environ["OPENAI_API_KEY"] = api_key
+os.environ["OPENAI_API_KEY"] = os.getenv('api_key')
 
 
 
