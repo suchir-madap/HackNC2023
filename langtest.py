@@ -48,7 +48,8 @@ from langchain.vectorstores import Chroma
 # os.environ['openAIkey']
 
 # import openai
-os.environ["OPENAI_API_KEY"] = secret.api
+api_key = "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"
+os.environ["OPENAI_API_KEY"] = api_key
 
 
 
