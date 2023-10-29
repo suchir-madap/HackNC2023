@@ -79,7 +79,6 @@ from langtest import callAPI
 
 
 
-answered = callAPI(passToLangChain, query)
 
 # if answered != None:
 #     st.subheader(answered)
@@ -89,9 +88,11 @@ col1, col2, col3 = st.columns([1,1,1])
 
 with col1:
     if st.button('Play'):
-        textToAudio(doc)
+        answered = callAPI(passToLangChain, query)
+        textToAudio(answered)
         autoplay_audio("output.mp3")
 with col2:
     st.button('Pause')
 with col3:
-    st.button('Clear')
+    if st.button('Reset'):
+        st.experimental_rerun()
