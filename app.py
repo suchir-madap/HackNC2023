@@ -11,7 +11,7 @@ class SessionState:
 
 session_state = SessionState()
 
-st.set_page_config(page_title="My Webpage", page_icon=":tada:", layout="wide")
+st.set_page_config(page_title="StudyAId", page_icon=":tada:", layout="wide")
 
 #PASS STRING TO TURN INTO AUDIO MP3
 def textToAudio(str):
@@ -63,10 +63,9 @@ def autoplay_audio(file_path: str):
             unsafe_allow_html=True,
         )
 
-st.subheader("Welcome to our AI Text Analyzer!")
+st.subheader("Welcome to StudyAId!")
 st.write("This program is designed to help you answer any questions you have about your uploaded document. Please enter a question/prompt below and the computer will generate a response to answer your query!")
-# st.write("Please input your text here, I will analyze it: ")
-# text = st.text_area('Enter your text or upload your file below: ')
+doc = st.text_area('Upload your file below: ')
 uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
 query = st.text_area('Enter your question: ')
@@ -91,10 +90,12 @@ with col1:
         answered = callAPI(passToLangChain, query)
         textToAudio(answered)
         autoplay_audio("output.mp3")
-        st.experimental_rerun()
+        
 with col2:
     if st.button('Play'):
-        st.audio("output.mp3", format="audio/mp3", start_time=0)
+        st.experimental_rerun()
+   
+
 with col3:
     if st.button('Pause'):
         st.audio("output.mp3", format="audio/mp3", start_time=0, play=False)
