@@ -3,7 +3,6 @@ import streamlit as st
 import base64
 from ingestPDF import readUploadedPdf
 from PIL import Image
-from langtest import callAPI
 
 image = Image.open('studyaid.jpeg')
 
