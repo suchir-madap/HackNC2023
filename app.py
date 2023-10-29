@@ -74,9 +74,15 @@ query = st.text_area('Enter your question: ')
 passToLangChain = readUploadedPdf(uploaded_file)
 
 
-from langtest import chunking
+from langtest import callAPI
 
-st.subheader(chunking(passToLangChain))
+
+
+answered = callAPI(passToLangChain, query)
+
+# if answered != None:
+#     st.subheader(answered)
+
 
 col1, col2, col3 = st.columns([1,1,1])
 
