@@ -7,35 +7,24 @@ from langchain.document_loaders import TextLoader
 
 # load the document and split it into chunks
 
-relativePath = "data/gettysburg_address.pdf"
-loader = TextLoader(relativePath)
-documents = loader.load() 
-
-
-
-# def file_reader(file):
-#     if(file.multiple_chunks() == False):
-#         text = file.read()
-#     else:
-#         while(file.multiple_chunks()):
-#             text += file.chunks()
-
-
 
 
 # split it into chunks
-text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
-docs = text_splitter.split_documents(documents)
 
-# create the open-source embedding function
-embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+def chunking(documents):
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    docs = text_splitter.split_documents(documents)
 
-# load it into Chroma
-db = Chroma.from_documents(docs, embedding_function)
+    # create the open-source embedding function
+    embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 
-# query it
-query = "What did the president say about Ketanji Brown Jackson"
-docs = db.similarity_search(query)
+    # load it into Chroma
+    db = Chroma.from_documents(docs, embedding_function)
 
-# print results
-print(docs[0].page_content)
+    # query it
+    query = "Who wrote the gettysburg address"
+    docs = db.similarity_search(query)
+
+    # print results
+    print(docs[0].page_content)
+    return docs[0].page_content

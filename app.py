@@ -68,10 +68,15 @@ st.write("Please input your text here, I will analyze it: ")
 doc = st.text_area('Enter your text or upload your file below: ')
 uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
 
-txt = st.text_area('Enter your question: ')
+query = st.text_area('Enter your question: ')
 
 
-readUploadedPdf(uploaded_file)
+passToLangChain = readUploadedPdf(uploaded_file)
+
+
+from langtest import chunking
+
+st.subheader(chunking(passToLangChain))
 
 col1, col2, col3 = st.columns([1,1,1])
 

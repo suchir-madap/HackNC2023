@@ -7,7 +7,7 @@ def readUploadedPdf(uploaded_file):
             print(type(f))
             f.write(uploaded_file.read())
 
-        convertPDF("data/store.pdf")
+    return convertPDF("data/store.pdf")
 
 
 
@@ -21,3 +21,5 @@ def convertPDF(uploadFile):
 
     pages = loader.load()
     print(pages)
+    return pages
+    

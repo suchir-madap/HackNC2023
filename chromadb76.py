@@ -1,10 +1,10 @@
-import chromadb
-chroma_client = chromadb.Client()
+import illegal
+chroma_client = illegal.Client()
 
 collection = chroma_client.create_collection(name="my_collection")
 
 
-client = chromadb.PersistentClient(path="/data")
+client = illegal.PersistentClient(path="/data")
 
 
 # collection.add(
