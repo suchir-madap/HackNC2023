@@ -5,10 +5,10 @@ from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
 from decouple import config
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-def configure():
-    load_dotenv()
+# def configure():
+#     load_dotenv()
 
 
 # load the document and split it into chunks
@@ -52,7 +52,9 @@ from langchain.vectorstores import Chroma
 # import openai
 # os.environ["OPENAI_API_KEY"] = os.getenv('api_key')
 
-os.environ["OPENAI_API_KEY"] = api_key
+os.environ["OPENAI_API_KEY"]
+
+
 
 
 # openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -70,7 +72,7 @@ from langchain.chains.question_answering import load_qa_chain
 
 
 def callAPI(documents, query):
-    configure()
+    # configure()
     chain = load_qa_chain(llm=OpenAI(), chain_type="map_reduce")
 
     testing = chain.run(input_documents=documents, question=query)
